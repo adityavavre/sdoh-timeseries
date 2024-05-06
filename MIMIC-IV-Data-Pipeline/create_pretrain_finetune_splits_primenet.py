@@ -172,9 +172,9 @@ if __name__ == '__main__':
 
         # create pretrain-finetune split according to the specified ratio
         pretrain_X = data_pretrain_pt[:int(data_pretrain_pt.shape[0]*pretrain_ratio)]
-        pretrain_y =  data_pretrain_pt[:int(data_pretrain_pt.shape[0]*pretrain_ratio)] # not used because it is pretraining data (self-supervised)
+        pretrain_y =  data_pretrain_labels_pt[:int(data_pretrain_pt.shape[0]*pretrain_ratio)] # not used because it is pretraining data (self-supervised)
         finetune_X = data_pretrain_pt[int(data_pretrain_pt.shape[0]*pretrain_ratio):]
-        finetune_y =  data_pretrain_pt[int(data_pretrain_pt.shape[0]*pretrain_ratio):]
+        finetune_y =  data_pretrain_labels_pt[int(data_pretrain_pt.shape[0]*pretrain_ratio):]
 
         # get train val split for pretrain and finetune data. Test split is already generated and fixed.
         pretrain_train_X, pretrain_val_X, pretrain_train_y, pretrain_val_y = train_test_split(pretrain_X, pretrain_y, test_size=0.1, random_state=42)
